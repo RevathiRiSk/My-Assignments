@@ -35,8 +35,8 @@ public class DeleteLead {
 		
 		driver.findElement(By.xpath("//button[text()='Find Leads']")).click();
 		
-		String leadId = driver.findElement(By.linkText("10763")).getText();
-		System.out.println(leadId);
+		String createdLeadId = driver.findElement(By.xpath("(//div[@class='x-grid3-cell-inner x-grid3-col-partyId'])[1]/a")).getText();
+		System.out.println("Name of the First Resulting Lead : " +createdLeadId);
 		
 		driver.findElement(By.xpath("//a[text() = 'Revathi']")).click();
 		
@@ -44,14 +44,14 @@ public class DeleteLead {
 		
 		driver.findElement(By.linkText("Find Leads")).click();
 		
-		driver.findElement(By.name("id")).sendKeys(leadId);
+		driver.findElement(By.name("id")).sendKeys(createdLeadId);
 		
 		driver.findElement(By.xpath("//button[text()='Find Leads']")).click();
 		
 		String leadIdDelete = driver.findElement(By.xpath("//div[@class='x-paging-info']")).getText();
-		System.out.println(leadIdDelete);
+		
 		 
-		if (leadId == leadIdDelete)
+		if (createdLeadId == leadIdDelete)
 			System.out.println("Match Found.Deleting is unsuccessfull.");
 		else
 			System.out.println("No match found. Deleting is successfull.");
