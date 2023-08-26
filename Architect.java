@@ -63,25 +63,30 @@ public class Architect {
 		
 		//Get the List of Salesforce Architect Certifications Available
 		List<WebElement> certifications = driver.findElements(By.xpath("(//div[@class='credentials-card_title'])/a"));
+		System.out.println("List of Salesforce Architect Certifications");
+		System.out.println("********************");
 		for(WebElement list : certifications) {
-			System.out.println("List of Salesforce Architect Certifications");
 			System.out.println(list.getText());
 		}
-		
+		System.out.println("********************");
 		//Click on Application Architect
 		driver.findElement(By.xpath("//a[text()='Application Architect']")).click();
 		
 		//Get the List of Certifications available
 		List<WebElement> certification2 = driver.findElements(By.xpath("(//div[@class='credentials-card_title'])/a"));
-		for(WebElement list2 : certification2) {
-			System.out.println("List of Certifications Available are :");
-			System.out.println(list2.getText());
-			
+		System.out.println("List of Certifications Available are :");
+		System.out.println("********************");
+		for(WebElement list2 : certification2) {	
+			System.out.println(list2.getText());	
 		}
 		
 		//Take a Snapshot of Certifications.
+		WebElement certification = driver.findElement(By.xpath("//a[text()='Platform App Builder']"));
+		act.scrollToElement(certification).perform();
 		File screenshotAs = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(screenshotAs, new File("./snap/pic.jpg"));
+		
+		driver.quit();
 		
 	}
 
